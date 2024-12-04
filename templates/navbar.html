@@ -1,0 +1,19 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App Landing Page</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'logo.jpg' %}"/>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/signin"><img src="{% static 'css/profile.jpg' %}" height="40px" width="40px" alt="Profile"></a>
+            <a href="/"><button class="home"><img src="{% static 'css/home.png' %}" alt="Home" height="30" width="30"></button></a>
+        </div>
+    </header>
+</body>
+</html>

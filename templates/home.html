@@ -1,0 +1,23 @@
+{% load static %}
+{% include "navbar.html" %}
+
+<body>
+    <main>
+        {% if request.user.is_authenticated %}
+        <div class="welcome"><h1>WELCOME! <span class="highlight">{{ request.user.first_name }}</span></h1></div>
+        <p class="tagline">“ Test Your Knowledge and Improve Every Day! ”</p>
+        <div class="buttons-container">
+            <a href="/dashboard"><button class="btn dashboard-btn">My Dashboard</button></a>
+            <a href="/quizzes"><button class="btn quiz-btn">Take Quiz</button></a>
+        </div>
+        {% else %}
+        <div class="welcome"><h1>WELCOME! to our portal </h1></div>
+        <p class="tagline">“ Test Your Knowledge and Improve Every Day! ”</p>
+        <div class="buttons-container">
+            <a href="/dashboard"><button class="btn dashboard-btn">My Dashboard</button></a>
+            <a href="/quizzes"><button class="btn quiz-btn">Take Quiz</button></a>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>

@@ -1,0 +1,107 @@
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: #008B8B;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        main {
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form div {
+            margin-bottom: 30px;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+
+        form h3 {
+            margin: 0 0 10px;
+            font-size: 1.4em;
+        }
+
+        label {
+            display: block;
+            margin: 8px 0;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        button {
+            display: inline-block;
+            background-color: #008B8B;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #005f5f;
+        }
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ quiz.title }}</h1>
+        <p>{{ quiz.description }}</p>
+    </header>
+    <main>
+        <form method="POST" action="{% url 'submit_quiz' quiz.id %}">
+            {% csrf_token %}
+            <div>
+                <h3>{{ question.question_text }}</h3>
+                {% for answer in question.answers.all %}
+                    <label>
+                        <input type="radio" name="{{ question.id }}" value="{{ answer.id }}">
+                        {{ answer.answer_text }}
+                    </label><br>
+                {% endfor %}
+            </div>
+            <a href="/quiz_result"><button type="submit">Submit Quiz</button></a>
+        </form>
+    </main>
+</body>
+</html>

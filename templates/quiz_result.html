@@ -1,0 +1,83 @@
+{% load static %}
+{% include "navbar.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        main {
+            max-width: 800px;
+            margin: 30px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        p {
+            font-size: 1.4em;
+            margin: 20px 0;
+        }
+
+        p strong {
+            font-size: 1.6em;
+            color: #008B8B;
+        }
+
+        .anoth {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            background-color: #008B8B;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .anoth:hover {
+            background-color: #005f5f;
+        }
+
+        /* Success and Error Styles */
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        .error {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+        <h1>Quiz Results: {{ quiz.title }}</h1>
+    <main>
+        {% if score == 1 %}
+            <p class="success">Congratulations! Correct Answer. Your score is: <strong>{{ score }}</strong></p>
+        {% else %}
+            <p class="error">Oops! Wrong Answer. Your score is: <strong>{{ score }}</strong></p>
+        {% endif %}
+        <a href="{% url 'quiz_list' %}"><div class="anoth">Attempt again</div></a>
+    </main>
+</body>
