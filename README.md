@@ -24,7 +24,7 @@ Clone the Repository
 
 ## Open a terminal/command prompt and run the following command to clone the repository:
 git clone https://github.com/rishav-gh/Quiz-app
-cd quiz-app
+- cd quiz-app
 
 ## Next install all the dependencies
 
